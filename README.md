@@ -1,0 +1,1 @@
+# gnome-extension-Git_profile_Switcher
