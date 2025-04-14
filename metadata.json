@@ -1,0 +1,11 @@
+{
+    "name": "Git Profile Switcher",
+    "description": "Select Which Git Profile is active",
+    "shell-version": [
+        "43",
+        "44"
+    ],
+    "uuid": "git-profile-switcher@jonathanhoffmann.wtf",
+    "version": "8",
+    "url": "https://github.com/JonathanHoffmann/gnome-extension-Git_profile_Switcher"
+}
