@@ -86,7 +86,7 @@ function disable() {
 }
 
 function clickFunction() {
-    GLib.spawn_command_line_async('/usr/bin/python3 /home/jonathho/OwnTools/gitProfileSwitcher/gitProfileSwitcher.py');
+    GLib.spawn_command_line_async('/home/jonathho/OwnTools/gitProfileSwitcher/gitProfileSwitcher.sh');
     if (indicator) {
         indicator._update();
     }
