@@ -37,7 +37,7 @@ const GitProfileIndicator = GObject.registerClass(
             this.add_child(this._box);
     
             this._update();
-            this._timeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 30, () => {
+            this._timeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 300, () => {
                 this._update();
                 return GLib.SOURCE_CONTINUE;
             });
@@ -88,6 +88,8 @@ function disable() {
 function clickFunction() {
     GLib.spawn_command_line_async('/home/jonathho/OwnTools/gitProfileSwitcher/gitProfileSwitcher.sh');
     if (indicator) {
+        indicator._update();
+        indicator._update();
         indicator._update();
     }
 }
