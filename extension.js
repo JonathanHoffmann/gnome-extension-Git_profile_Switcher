@@ -67,6 +67,10 @@ const GitProfileIndicator = GObject.registerClass(
             }
             super.destroy();
         }
+
+        updateText(newString) {
+            this._label.set_text(newString);
+        }
     });
     
 
@@ -86,10 +90,26 @@ function disable() {
 }
 
 function clickFunction() {
-    GLib.spawn_command_line_async('/home/jonathho/OwnTools/gitProfileSwitcher/gitProfileSwitcher.sh');
-    if (indicator) {
-        indicator._update();
-        indicator._update();
-        indicator._update();
+    try {
+        let [success, out, err, status] = GLib.spawn_command_line_sync('/home/jonathho/OwnTools/gitProfileSwitcher/gitProfileSwitcher.sh');
+
+        if (!success) {
+            log("Switching Profile unsuccessful.");
+            log(err);
+            return;
+        }
+        if (!indicator) {
+            log("No indicator to update.");
+            return;
+        }
+
+        let output = ByteArray.toString(out).trim();
+        indicator.updateText(output);
+    } catch (e) {
+        logError(e, "Error executing gitProfileSwitcher.sh");
+        if (indicator) {
+            indicator.updateText("Err");
+        }
     }
 }
+
